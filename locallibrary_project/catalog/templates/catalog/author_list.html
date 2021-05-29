@@ -13,4 +13,5 @@
 {% else %}
 <p>There are no authors in the library.</p>
 {% endif %}
+<p> {% if user.is_staff %} <a href="{% url 'author-create' %}"> Add new author </a>{% endif %}</p>
 {% endblock %}

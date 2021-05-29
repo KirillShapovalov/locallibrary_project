@@ -13,4 +13,5 @@
 {% else %}
 <p>There are no books in the library.</p>
 {% endif %}
+<p> {% if user.is_staff %} <a href="{% url 'book-create' %}"> Add new book </a>{% endif %}</p>
 {% endblock %}

@@ -3,7 +3,7 @@
 {% block content %}
 <h1>Title: {{ book.title }}</h1>
 
-<p><strong>Author:</strong> <a href="{{ book.author.get_absolute_url }}">{{ book.author }}</a></p> <!-- author detail link not yet defined -->
+<p><strong>Author:</strong> <a href="{{ book.author.get_absolute_url }}">{{ book.author }}</a></p>
 <p><strong>Summary:</strong> {{ book.summary }}</p>
 <p><strong>ISBN:</strong> {{ book.isbn }}</p>
 <p><strong>Language:</strong> {{ book.language }}</p>
@@ -24,4 +24,6 @@
     <p class="text-muted"><strong>Id:</strong> {{ copy.id }}</p>
     {% endfor %}
 </div>
+<p>{% if user.is_staff %} <a href="{{ book.update_book }}"> Update this book </a>{% endif %}</p>
+<p>{% if user.is_staff %} <a href="{{ book.delete_book }}"> Delete this book </a>{% endif %}</p>
 {% endblock %}
