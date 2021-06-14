@@ -14,4 +14,6 @@
     <p>{{ book.summary }}</p>
     {% endfor %}
 </div>
+<p>{% if user.is_staff %} <a href="{{ author.update_author }}"> Update this author </a>{% endif %}</p>
+<p>{% if user.is_staff %} <a href="{{ author.delete_author }}"> Delete this author </a>{% endif %}</p>
 {% endblock %}

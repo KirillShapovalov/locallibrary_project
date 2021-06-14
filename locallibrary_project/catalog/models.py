@@ -44,6 +44,7 @@ class Book(models.Model):
 
     class Meta:
         ordering = ['title', 'author']
+        permissions = (("can_mark_returned", "Set book as returned"),)
 
     def display_genre(self):
         """Creates a string for the Genre. This is required to display genre in Admin."""
@@ -58,6 +59,12 @@ class Book(models.Model):
     def get_absolute_url(self):
         """Returns the url to access a detail record for this book."""
         return reverse('book-detail', args=[str(self.id)])
+
+    def update_book(self):
+        return reverse('book-update', args=[str(self.id)])
+
+    def delete_book(self):
+        return reverse('book-delete', args=[str(self.id)])
 
 
 class BookInstance(models.Model):
@@ -108,10 +115,17 @@ class Author(models.Model):
 
     class Meta:
         ordering = ['last_name', 'first_name']
+        permissions = (("can_mark_returned", "Set book as returned"),)
 
     def get_absolute_url(self):
         """Returns the url to access a particular author instance."""
         return reverse('author-detail', args=[str(self.id)])
+
+    def update_author(self):
+        return reverse('author-update', args=[str(self.id)])
+
+    def delete_author(self):
+        return reverse('author-delete', args=[str(self.id)])
 
     def __str__(self):
         """String for representing the Model object."""
